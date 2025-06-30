@@ -69,7 +69,6 @@
 			supported-ids = <0x1103>;
 			qcom,sleep-clk-support;
 			qcom,wlan-ramdump-dynamic = <0x420000>;
-			qcom,no-bwscale;
 		};
 
 		chip_cfg@1 {
