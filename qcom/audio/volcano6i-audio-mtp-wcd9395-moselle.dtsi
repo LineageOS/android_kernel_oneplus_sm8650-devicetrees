@@ -1,8 +1,26 @@
 #include "volcano6i-audio-mtp-wcd9395.dtsi"
 
+&wcd939x_codec {
+	qcom,usbcss-hs-xtalk-config = <2>;
+	qcom,usbcss-hs-rdson = <600>;
+	qcom,usbcss-hs-r2 = <7550>;
+	qcom,usbcss-hs-r3 = <1>;
+	qcom,usbcss-hs-r4 = <330>;
+	qcom,usbcss-hs-r5 = <5>;
+	qcom,usbcss-hs-r6 = <1>;
+	qcom,usbcss-hs-r7 = <5>;
+	qcom,usbcss-hs-lin-k-aud = <13>;
+	qcom,usbcss-hs-lin-k-gnd = <13>;
+};
+
 &pineapple_snd {
+	qcom,model = "volcano6i-mtp-msl_wsa883x-snd-card";
 	/delete-property/ qcom,pri-mi2s-gpios;
-	qcom,wcn-bt = <0>;
+	qcom,wcn-bt = <1>;
+	qcom,msm-mbhc-usbc-audio-supported = <1>;
+	qcom,msm-mbhc-hphl-swh = <0>;
+	qcom,msm-mbhc-gnd-swh = <0>;
+	wcd939x-i2c-handle = <&wcd_usbss>;
 };
 
 &fm_i2s0_gpios {
