@@ -835,6 +835,12 @@
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
 
+		opp-400000 {
+			opp-hz = /bits/ 64 <400000>;
+			opp-peak-kBps = <0 0>;
+			opp-avg-kBps = <0 0>;
+		};
+
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <500000 200000>;
@@ -1290,6 +1296,12 @@
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,bam-pipe-pair = <1>;
+		qcom,offload-ops-support;
+		qcom,bam-pipe-offload-hlos-cpb-1 = <2>;
+		qcom,bam-pipe-offload-hlos-cpb-2 = <3>;
+		qcom,bam-pipe-offload-hlos-cpb-3 = <4>;
+		qcom,bam-pipe-offload-hlos-cpb-4 = <8>;
+		qcom,bam-pipe-offload-hlos-hlos = <9>;
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
