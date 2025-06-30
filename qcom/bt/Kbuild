@@ -55,6 +55,10 @@ ifeq ($(CONFIG_ARCH_NEO),y)
 dtbo-y += neo_la-kiwi-bt.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_SERAPH),y)
+dtbo-y += seraph-bt.dtbo
+endif
+
 always-y        := $(dtb-y) $(dtbo-y)
 subdir-y        := $(dts-dirs)
 clean-files     := *.dtb *.dtbo

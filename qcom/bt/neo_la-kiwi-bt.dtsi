@@ -1,4 +1,3 @@
-#include <dt-bindings/interconnect/qcom,pineapple.h>
 
 &tlmm {
 	bt_en_sleep: bt_en_sleep {
