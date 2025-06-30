@@ -11,12 +11,11 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
 #include "pineapple-v2-gpu.dtsi"
-#include "pineapple-v2-gpu-pwrlevels.dtsi"
+#include "pineapple-v2-iot-gpu-pwrlevels.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Pineapple";
-	compatible = "qcom,pineapple", "qcom,pineappleq";
-	qcom,msm-id = <557 0x20000>, <577 0x20000>, <645 0x20000>,
-		<646 0x20000>, <696 0x20000>;
+	model = "Qualcomm Technologies, Inc. Pineapple SG";
+	compatible = "qcom,pineapple";
+	qcom,msm-id = <702 0x20000>;
 	qcom,board-id = <0 0>;
 };
