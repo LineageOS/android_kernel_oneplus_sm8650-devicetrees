@@ -49,6 +49,7 @@
                 qcom,lan-rx-napi;
                 qcom,tx-napi;
                 qcom,tx-poll;
+                qcom,gfp-no-retry;
                 qcom,register-collection-on-crash;
                 qcom,testbus-collection-on-crash;
                 qcom,non-tn-collection-on-crash;
