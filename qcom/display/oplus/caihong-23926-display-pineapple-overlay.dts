@@ -10,11 +10,3 @@
 
 	oplus,project-id = <23926 23927 23976 23978>;
 };
-
-&mdss_dsi_phy0 {
-	oplus,dsi-pll-ssc-disalbed;
-};
-
-&mdss_dsi_phy1 {
-	oplus,dsi-pll-ssc-disalbed;
-};
