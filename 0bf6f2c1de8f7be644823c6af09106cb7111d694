@@ -34,6 +34,24 @@
       "parentUuid": "94f1ff4d_e6149664",
       "revId": "0bf6f2c1de8f7be644823c6af09106cb7111d694",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c730b9a7_5cdec6ec",
+        "filename": "qcom/display/oplus/caihong-23926-display-pineapple-overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 30975
+      },
+      "writtenOn": "2025-09-29T14:18:34Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "9625b872_707bec0c",
+      "revId": "0bf6f2c1de8f7be644823c6af09106cb7111d694",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
