@@ -249,7 +249,7 @@
 	oplus,vreg_ctrl_flag;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
-	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_both_hv_porch";
 	qcom,dsi-supported-dfps-list = <120 144 90  60   50   48   30>;
 	qcom,dsi-dfps-hfp-list       = <118 57  118 118  118  118  118>;
 	qcom,dsi-dfps-hbp-list       = <100 38  100 100  100  100  100>;
