@@ -1,3 +1,7 @@
+&adspslpi_mem {
+	reg = <0x0 0x9d400000 0x0 0x3600000>;
+};
+
 &pineapple_snd {
 	qcom,audio-routing =
 		"AMIC1", "Analog Mic1",

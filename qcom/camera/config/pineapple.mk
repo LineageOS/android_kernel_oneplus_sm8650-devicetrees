@@ -26,6 +26,8 @@ dtbo-$(CONFIG_AUDI_DTB)    += oplus/audi-camera-overlay.dtbo \
 
 dtbo-$(CONFIG_AVALON_DTB)    += oplus/avalon-camera-overlay.dtbo \
 
+dtbo-$(CONFIG_ARCH_CLIFFS)    += oplus/lexus-camera-overlay.dtbo \
+
 #OPLUS_DTS_OVERLAY end
 ifneq ($(CONFIG_OPLUS_DEVICE_DTBS), y)
 dtbo-$(CONFIG_ARCH_CLIFFS)	+= cliffs-camera-sensor-cdp.dtbo \

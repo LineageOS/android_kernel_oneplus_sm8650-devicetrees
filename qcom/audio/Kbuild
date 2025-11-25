@@ -53,6 +53,7 @@ dtbo-$(CONFIG_CORVETTE_DTB) += oplus/corvette-23814-audio-pineapple-overlay.dtbo
 dtbo-$(CONFIG_CAIHONG_DTB) += oplus/caihong-23926-audio-pineapple-overlay.dtbo
 dtbo-$(CONFIG_AVALON_DTB) += oplus/avalon-24211-audio-cliffs-overlay.dtbo
 dtbo-$(CONFIG_GIULIA_DTB) += oplus/giulia-23851-audio-pineapple-overlay.dtbo
+dtbo-y += oplus/lexus-24881-audio-cliffs-overlay.dtbo
 #OPLUS_DTS_OVERLAY end
 endif
 

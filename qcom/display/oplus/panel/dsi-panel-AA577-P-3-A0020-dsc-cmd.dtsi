@@ -5391,7 +5391,7 @@
 
 	/* ofp config */
 	oplus,ofp-fp-type = <0x90>;
-	oplus,ofp-longrui-aod-config = <0x02>;
+	oplus,ofp-longrui-aod-config = <0x06>;
 	oplus,ofp-need-to-wait-data-before-aod-on;
 	oplus,ofp-aod-off-frame-cost = <1>;
 	/* adfr config */
@@ -6035,4 +6035,5 @@
 	//oplus,dp-enabled;
 
 	oplus,gamma-compensation-support;
+	oplus,dozedisable-esdcheck-delay;
 };

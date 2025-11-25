@@ -49,6 +49,7 @@ dtbo-$(CONFIG_AVALON_DTB) += oplus/audi-23803-display-cliffs-overlay.dtbo
 dtbo-$(CONFIG_CAIHONG_DTB) += oplus/caihong-23926-display-pineapple-overlay.dtbo
 dtbo-$(CONFIG_CORVETTE_DTB) += oplus/corvette-23814-display-pineapple-overlay.dtbo
 dtbo-$(CONFIG_GIULIA_DTB) += oplus/giulia-23851-display-pineapple-overlay.dtbo
+dtbo-y += oplus/Lexus-24881-display-cliffs-overlay.dtbo
 #PLUS_DTS_OVERLAY end
 else
 dtbo-$(CONFIG_ARCH_KALAMA) += display/trustedvm-kalama-sde-display-mtp-overlay.dtbo \
