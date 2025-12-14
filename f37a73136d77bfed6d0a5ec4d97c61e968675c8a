@@ -33,6 +33,23 @@
       "message": "Fine on caihong",
       "revId": "f37a73136d77bfed6d0a5ec4d97c61e968675c8a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f773ef_2a658788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35825
+      },
+      "writtenOn": "2025-12-14T13:53:15Z",
+      "side": 1,
+      "message": "Fine on avalon too.",
+      "revId": "f37a73136d77bfed6d0a5ec4d97c61e968675c8a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
