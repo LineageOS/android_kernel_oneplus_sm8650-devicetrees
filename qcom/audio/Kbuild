@@ -54,6 +54,8 @@ dtbo-$(CONFIG_CAIHONG_DTB) += oplus/caihong-23926-audio-pineapple-overlay.dtbo
 dtbo-$(CONFIG_AVALON_DTB) += oplus/avalon-24211-audio-cliffs-overlay.dtbo
 dtbo-$(CONFIG_GIULIA_DTB) += oplus/giulia-23851-audio-pineapple-overlay.dtbo
 dtbo-$(CONFIG_LEXUS_DTB) += oplus/lexus-24881-audio-cliffs-overlay.dtbo
+dtbo-$(CONFIG_BALE_DTB) += oplus/bale-23609-audio-cliffs-overlay.dtbo
+dtbo-$(CONFIG_BALE_DTB) += oplus/bale-23622-audio-cliffs-overlay.dtbo
 #OPLUS_DTS_OVERLAY end
 endif
 
