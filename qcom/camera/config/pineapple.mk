@@ -28,6 +28,9 @@ dtbo-$(CONFIG_AVALON_DTB)    += oplus/avalon-camera-overlay.dtbo
 
 dtbo-$(CONFIG_LEXUS_DTB)    += oplus/lexus-camera-overlay.dtbo
 
+dtbo-$(CONFIG_BALE_DTB)    += oplus/bale-camera-overlay.dtbo \
+                               oplus/baleC-camera-overlay.dtbo
+
 #OPLUS_DTS_OVERLAY end
 ifneq ($(CONFIG_OPLUS_DEVICE_DTBS), y)
 dtbo-$(CONFIG_ARCH_CLIFFS)	+= cliffs-camera-sensor-cdp.dtbo \

@@ -39,6 +39,12 @@ OPLUS_PINEAPPLE_BOARDS += \
 else ifeq ($(CONFIG_PRADO_DTB),y)
 OPLUS_PINEAPPLE_BOARDS += \
                           prado-25811-volcano-overlay.dtbo
+else ifeq ($(CONFIG_BALE_DTB),y)
+OPLUS_PINEAPPLE_BOARDS += \
+                          bale-23609-cliffs-overlay.dtbo\
+                          bale-23622-cliffs-overlay.dtbo\
+                          bale-23718-cliffs-overlay.dtbo\
+                          bale-24687-cliffs-overlay.dtbo
 endif
 
 dtb-y += $(OPLUS_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
