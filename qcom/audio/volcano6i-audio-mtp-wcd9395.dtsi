@@ -72,11 +72,7 @@
 			<&wcd939x_codec>, <&wsa883x_0221>, <&wsa883x_0222>;
 	asoc-codec-names = "msm-stub-codec.1", "lpass-cdc",
 			"wcd939x_codec", "wsa-codec1", "wsa-codec2";
-	qcom,msm-mbhc-usbc-audio-supported = <0>;
-	qcom,msm-mbhc-hphl-swh = <1>;
-	qcom,msm-mbhc-gnd-swh = <1>;
 	qcom,wcd-disable-legacy-surge;
-	wcd939x-i2c-handle = <&wcd_usbss>;
 	qcom,ext-disp-audio-rx = <1>;
 };
 

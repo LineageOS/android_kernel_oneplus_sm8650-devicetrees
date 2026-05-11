@@ -73,13 +73,9 @@
 		vdd-1.2-rfa-supply = <&S2B>;
 		qcom,vdd-1.2-rfa-config = <1256000 1408000 0 0 0>;
 		vdd-cx-supply = <&L3F>;
-		qcom,vdd-cx-config = <650000 1050000 0 0 0>;
+		qcom,vdd-cx-config = <620000 1050000 28000 0 0>;
 		vdd-1.8-io-supply = <&L1B>;
 		qcom,vdd-1.8-io-config = <1800000 1800000 0 0 0>;
-		vdd-3p3-2g-supply = <&L14B>;
-		qcom,vdd-3p3-2g-config = <3125000 3125000 0 0 0>;
-		vdd-3p3-5g-supply = <&L15B>;
-		qcom,vdd-3p3-5g-config = <3125000 3125000 0 0 0>;
 
 		qcom,smem-states = <&smp2p_wlan_1_out 0>,
 				   <&smp2p_wlan_2_out 0>,
@@ -89,6 +85,8 @@
 					"wlan-ep-powersave-smp2p-out";
 
 		qcom,qmp = <&aoss_qmp>;
+
+		qcom,vreg_ol_cpr ="l3f";
 
 		qcom,pdc_init_table =
 			" {class: wlan_pdc, ss: rf, res: s3b.v, dwnval: 920}",

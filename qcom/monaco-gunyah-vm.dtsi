@@ -63,6 +63,20 @@
 			no-map;
 			qcom,label = <0x60>;
 		};
+
+		cp_pixel_mem: cp_pixel_region {
+			no-map;
+			qcom,target-vmid = <0xa>;
+			qcom,label = <0xc0a>;
+			qcom,unmapped;
+		};
+
+		system_secure_mem: system_secure_region {
+			no-map;
+			qcom,label = <0xc09>;
+			qcom,target-vmid = <0x9>;
+			qcom,unmapped;
+		};
 	};
 
 	cpus {
@@ -148,6 +162,10 @@
 
 	virtio_input_keyboard@1c150000 {
 		wakeup-source;
+	};
+
+	virtio_console {
+		qcom,dev-name = "vconsole";
 	};
 
 	virtio_blk_super {
@@ -248,10 +266,11 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,10C,159,199,47E,7F1;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,10C,159,199,47E,7F1;ta=keymaster64,widevine,pr_3_0,she_gvm,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,bintestapp64,tzecotestapp1,crypto_testapp,sst_testapp,autosst_testapp,auto_test_unpermitted,FD02C9DA-306C-48C7-A49C-BBD827AE86EE,5AF8C3E6-D9DF-446E-4FF2-D4D58E8CA49B,19CE19B9-FD73-4262-8553-E5CAC40C895A,C02CAC07-2639-4EF0-BC12-C4AF1FB3E276,15C6B6E4-D083-48E4-8744-4D90A8FF1EF2,CAD10542-34E4-452D-6156-E979AA6E61BC,23914957-C174-4EA6-54D1-DA820F77B4B0,5AF8C3E6-D9DF-446E-4FF2-C3C47D7B938A,CAD10542-34E4-452D-6156-E979AA6E6132,5AF8C3E6-D9DF-446E-4FF2-B2B36C6A8279,smplap64;";
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump";
+		qcom,peripheral-vmids = <0x9 0xa>;
 
 		/* Pass through regions */
 		iomemory-ranges = <
@@ -273,6 +292,8 @@
 				0x0 0x991000 0x0 0x991000 0x0 0x1000 0x0
 				/*MPROC NS1 IPCC region*/
 				0x0 0x421000 0x0 0x421000 0x0 0x1000 0x0
+				/* EMAC0 CH4 region */
+				0x0 0x2304C000 0x0 0x2304C000 0x0 0x1000 0x0
 				>;
 
 		gic-irq-ranges = <
@@ -281,6 +302,9 @@
 				/* MPROC NS1 IPCC GIC IRQ */
 				591 591
 
+				/* EMAC0 CH4 GIC IRQ */
+				902 902
+				973 973
 				>;
 
 		memory {
@@ -857,7 +881,7 @@
 
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_console";
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
@@ -1114,6 +1138,21 @@
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
 		};
+
+		qcom,cp_pixel {
+			qcom,dma-heap-name = "qcom,secure-pixel";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x80000>;
+			memory-region = <&cp_pixel_mem>;
+		};
+
+
+		qcom,cp_bitstream {
+			qcom,dma-heap-name = "system-secure";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x40000>;
+			memory-region = <&system_secure_mem>;
+		};
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -1171,6 +1210,48 @@
 		memory-region = <&kinfo_mem>;
 	};
 
+	mtl_rx_setup: rx-queue-config {
+		snps,rx-queues-to-use = <1>;
+		snps,rx-sched-sp;
+
+		queue {
+			snps,dcb-algorithm;
+			snps,priority = <0x1>;
+		};
+	};
+
+	mtl_tx_setup: tx-queue-config {
+		snps,tx-queues-to-use = <1>;
+		snps,tx-sched-sp;
+		queue {
+			snps,dcb-algorithm;
+		};
+	};
+
+	emac1_hw: qcom,ethernet@2304C000 {
+		compatible = "qcom,stmmac-ethqos-emac1";
+		emac-core-version = <0x30010000>;
+		qcom,arm-smmu;
+		reg = <0x2304C000 0x1000>;
+		reg-names = "stmmaceth";
+		interrupts-extended = <&intc 0 870 4>, <&intc 0 941 4>;
+		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
+		snps,tso;
+		snps,pbl = <32>;
+		mac-address = [00 55 7B B5 7D f7];
+		rx-fifo-depth = <4096>;
+		tx-fifo-depth = <4096>;
+		snps,mtl-rx-config = <&mtl_rx_setup>;
+		snps,mtl-tx-config = <&mtl_tx_setup>;
+		queue = <0>;
+		emac1_emb_smmu: emac1_emb_smmu {
+			compatible = "qcom,emac-thin-smmu-embedded";
+			iommus = <&apps_smmu 0x128 0x1>;
+			qcom,iommu-dma = "fastmap";
+			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
+		};
+	};
+
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
 	};
@@ -1222,11 +1303,11 @@
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
 	reg = <0x9c0000 0x2000>;
-	qcom,firmware-managed-resources;
+	compatible = "qcom,sa7255p-geni-se-qup", "qcom,sa8255p-geni-se-qup";
 
 	iommus = <&apps_smmu 0x418 0x0>;
 	qcom,iommu-dma = "default";
-	status = "disable";
+	status = "ok";
 };
 
 &qupv3_se2_4uart {
@@ -1241,7 +1322,7 @@
 	/delete-property/ pinctrl-3;
 	/delete-property/ interrupts-extended;
 	/delete-property/ qcom,wakeup-byte;
-	compatible = "qcom,geni-uart";
+	compatible = "qcom,sa7255p-geni-uart", "qcom,sa8255p-geni-uart";
 	reg = <0x988000 0x4000>;
 	interrupts = <GIC_SPI 529 IRQ_TYPE_LEVEL_HIGH>;
 
@@ -1249,5 +1330,5 @@
 	power-domain-names = "power", "perf";
 
 	qcom,auto-suspend-disable;
-	status = "disable";
+	status = "ok";
 };

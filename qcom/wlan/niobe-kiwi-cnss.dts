@@ -7,5 +7,5 @@
 	model = "Qualcomm Technologies, Inc. Niobe SoCs";
 	compatible = "qcom,niobe", "qcom,niobep-qxr", "qcom,niobep", "qcom,qxr", "qcom,idp", "qcom,niobe-idp";
 	qcom,msm-id = <629 0x10000>, <652 0x10000>;
-	qcom,board-id = <0x10021 0>, <0x10022 0>, <0x10022 1>, <0x10022 2>, <0x10026 0>, <0x10026 1>, <0x20026 0x1>;
+	qcom,board-id = <0x10021 0>, <0x10022 0>, <0x10022 1>, <0x10022 2>, <0x10022 3>, <0x10026 0>, <0x10026 1>, <0x20026 0x1>;
 };

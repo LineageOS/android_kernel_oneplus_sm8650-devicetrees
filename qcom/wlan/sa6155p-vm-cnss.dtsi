@@ -1,4 +1,3 @@
-#include <dt-bindings/interconnect/qcom,sm6150.h>
 
 &soc {
 	vreg_wlan: vreg_wlan {
