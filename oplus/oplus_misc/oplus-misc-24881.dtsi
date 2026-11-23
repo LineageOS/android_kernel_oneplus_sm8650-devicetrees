@@ -48,6 +48,10 @@
 	status = "disabled";
 };
 
+&aliases {
+	i2c3 = "/soc/qcom,qupv3_0_geni_se@ac0000/i2c@a8c000";
+};
+
 &qupv3_se3_i2c {
 	qcom,clk-freq-out = <1000000>;
 	status = "ok";
